@@ -1,0 +1,19 @@
+{
+    "name": "abp",
+    "version": "1.0.0",
+    "main": "server.js",
+    "scripts": {
+        "dev": "node --watch src/server.js",
+        "start": "node server.js",
+        "db:init": "node ./src/infra/run-sql"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "dotenv": "^17.4.2",
+        "express": "^5.2.1",
+        "pg": "^8.20.0"
+    }
+}
