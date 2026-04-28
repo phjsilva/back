@@ -7,6 +7,7 @@ const {
     updateUsuarioEmail,
     updateUsuarioSenha,
 } = require("../repositories/usurio.repositories");
+const authMiddleware = require("../middlewares/auth.middleware");
 
 const router = Router();
 
@@ -41,7 +42,7 @@ router.post("/", async (req, res) => {
     }
 });
 
-router.patch("/:idUsuario/cpf", async function (req, res) {
+router.patch("/:idUsuario/cpf", authMiddleware, async function (req, res) {
     const idUsuario = getidUsuario(req.params);
     if (!idUsuario) {
         return res.status(400).json({ message: "idUsuario invalido" });
@@ -73,11 +74,8 @@ router.patch("/:idUsuario/cpf", async function (req, res) {
     }
 });
 
-router.patch("/:idUsuario/nome", async function (req, res) {
-    const idUsuario = getidUsuario(req.params);
-    if (!idUsuario) {
-        return res.status(400).json({ message: "idUsuario invalido" });
-    }
+router.patch("/nome", authMiddleware, async function (req, res) {
+    const idUsuario = req.usuario.id_usuario;
 
     const { nome } = req.body;
     if (!nome) {
@@ -98,8 +96,7 @@ router.patch("/:idUsuario/nome", async function (req, res) {
         });
     }
 });
-
-router.patch("/:idUsuario/email", async function (req, res) {
+router.patch("/:idUsuario/email", authMiddleware, async function (req, res) {
     const idUsuario = getidUsuario(req.params);
     if (!idUsuario) {
         return res.status(400).json({ message: "idUsuario invalido" });
@@ -131,7 +128,7 @@ router.patch("/:idUsuario/email", async function (req, res) {
     }
 });
 
-router.patch("/:idUsuario/senha", async function (req, res) {
+router.patch("/:idUsuario/senha", authMiddleware, async function (req, res) {
     const idUsuario = getidUsuario(req.params);
     if (!idUsuario) {
         return res.status(400).json({ message: "idUsuario invalido" });
