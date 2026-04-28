@@ -3,7 +3,7 @@ require("dotenv").config({
     quiet: true,
 });
 const path = require("path");
-const router = require("./routes/usuario.routes");
+const router = require("./routes");
 
 const PORT = process.env.PORT;
 const app = express();
