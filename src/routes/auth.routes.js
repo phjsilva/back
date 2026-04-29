@@ -1,7 +1,7 @@
 const { Router, json } = require("express");
 const {
     findUsuarioByCpfAndSenha,
-} = require("../repositories/usurio.repositories");
+} = require("../repositories/usuario.repositories");
 const { createToken } = require("../utils/jwt");
 const router = Router();
 

@@ -1,5 +1,5 @@
 const { verifyToken } = require("../utils/jwt");
-const { findUsuarioById } = require("../repositories/usurio.repositories");
+const { findUsuarioById } = require("../repositories/usuario.repositories");
 
 async function authMiddleware(req, res, next) {
     const authorization = req.headers.authorization;
